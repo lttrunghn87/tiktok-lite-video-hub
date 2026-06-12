@@ -4,91 +4,91 @@ export type VideoLink = {
   tag: string;
   duration: string;
   url: string;
-  source: "site mẫu" | "tìm kiếm web";
-  status: "cần xác minh" | "ứng viên";
+  source: "tìm kiếm web";
+  status: "có dấu hiệu 60 phút/1 giờ" | "ứng viên cần kiểm tra";
 };
 
 export const videos: VideoLink[] = [
   {
     id: 1,
-    title: "Link dài 01",
-    tag: "video dài",
-    duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZS6rUywGN/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    title: "60 phút không tiếng - phần 86",
+    tag: "60 phút",
+    duration: "60 phút+",
+    url: "https://lite.tiktok.com/t/ZSry3KYu7/",
+    source: "tìm kiếm web",
+    status: "có dấu hiệu 60 phút/1 giờ"
   },
   {
     id: 2,
-    title: "Link dài 02",
-    tag: "video dài",
-    duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSrGTDx7a/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    title: "TikTok Lite 120 phút/60 phút",
+    tag: "60 phút",
+    duration: "60 phút+",
+    url: "https://lite.tiktok.com/t/ZSrjqdo5Q/",
+    source: "tìm kiếm web",
+    status: "có dấu hiệu 60 phút/1 giờ"
   },
   {
     id: 3,
-    title: "Link dài 03",
-    tag: "video dài",
+    title: "#1hour - VIDEO 60P",
+    tag: "1 hour",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSrGTt2F5/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZSrJxNmCK/",
+    source: "tìm kiếm web",
+    status: "có dấu hiệu 60 phút/1 giờ"
   },
   {
     id: 4,
-    title: "Link dài 04",
-    tag: "video dài",
-    duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZS6rUtJ2s/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    title: "Video 60 phút 009",
+    tag: "video60phut",
+    duration: "60 phút+",
+    url: "https://lite.tiktok.com/t/ZShX3CRbr/",
+    source: "tìm kiếm web",
+    status: "có dấu hiệu 60 phút/1 giờ"
   },
   {
     id: 5,
-    title: "Link dài 05",
+    title: "VIDEO 60P - Version 2",
     tag: "video dài",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSUQcMJeP/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZSM43sfyA/",
+    source: "tìm kiếm web",
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 6,
-    title: "Link dài 06",
-    tag: "video dài",
+    title: "Stranger Things popup",
+    tag: "ứng viên",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSUQ3d9WK/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZSu2oTyYd/",
+    source: "tìm kiếm web",
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 7,
-    title: "Link dài 07",
-    tag: "video dài",
+    title: "Video trị liệu đầu gối",
+    tag: "ứng viên",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSUQcXHY8/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZSftVJMFY/",
+    source: "tìm kiếm web",
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 8,
-    title: "Link dài 08",
-    tag: "video dài",
+    title: "Video trị liệu cổ vai",
+    tag: "ứng viên",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSUQToALd/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZSyTeMPqT/",
+    source: "tìm kiếm web",
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 9,
-    title: "Link dài 09",
-    tag: "video dài",
+    title: "Bản đồ định kiến Aichi",
+    tag: "ứng viên",
     duration: "1 giờ+",
-    url: "https://lite.tiktok.com/t/ZSUQw14ca/",
-    source: "site mẫu",
-    status: "cần xác minh"
+    url: "https://lite.tiktok.com/t/ZS2Xusypq/",
+    source: "tìm kiếm web",
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSrJxakog/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "có dấu hiệu 60 phút/1 giờ"
   },
   {
     id: 11,
@@ -106,7 +106,7 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSM4coUbQ/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 12,
@@ -115,7 +115,7 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSDWUe7wp/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 13,
@@ -124,7 +124,7 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSDkF4rgr/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 14,
@@ -133,7 +133,7 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSh978sxC/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "ứng viên cần kiểm tra"
   },
   {
     id: 15,
@@ -142,6 +142,6 @@ export const videos: VideoLink[] = [
     duration: "1 giờ+",
     url: "https://lite.tiktok.com/t/ZSxMTk6S7/",
     source: "tìm kiếm web",
-    status: "ứng viên"
+    status: "ứng viên cần kiểm tra"
   }
 ];
