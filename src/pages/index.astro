@@ -11,8 +11,8 @@ const sampleSource = "https://giaumobi.blogspot.com/";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Danh sach link TikTok Lite video dai tren 1 gio de mo nhanh." />
-    <title>TikTok Lite Video Dai</title>
+    <meta name="description" content="Danh sách link TikTok Lite video dài trên 1 giờ để mở nhanh." />
+    <title>TikTok Lite Video Dài</title>
   </head>
   <body class="bg-paper text-ink antialiased">
     <main class="mx-auto min-h-screen w-full max-w-3xl px-4 py-6 sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ const sampleSource = "https://giaumobi.blogspot.com/";
           <div>
             <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">TikTok Lite</p>
             <h1 class="mt-2 text-2xl font-semibold leading-tight text-ink sm:text-3xl">
-              Video dai tren 1 gio
+              Video dài trên 1 giờ
             </h1>
           </div>
           <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded border border-line bg-white shadow-sm">
@@ -30,14 +30,14 @@ const sampleSource = "https://giaumobi.blogspot.com/";
         </div>
         <div class="mt-4 flex flex-wrap items-center gap-2 text-sm text-muted">
           <span class="rounded border border-line bg-white px-2.5 py-1">{total} link</span>
-          <span class="rounded border border-line bg-white px-2.5 py-1">Mo bang TikTok Lite</span>
+          <span class="rounded border border-line bg-white px-2.5 py-1">Mở bằng TikTok Lite</span>
           <a
             class="rounded border border-line bg-white px-2.5 py-1 text-ink underline-offset-4 hover:underline"
             href={sampleSource}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            Mau goc
+            Mẫu gốc
           </a>
         </div>
       </header>
@@ -48,7 +48,7 @@ const sampleSource = "https://giaumobi.blogspot.com/";
           id="video-search"
           class="h-11 w-full rounded border border-line bg-white px-3 text-sm outline-none transition focus:border-tiktok-cyan focus:ring-2 focus:ring-tiktok-cyan/30"
           type="search"
-          placeholder="Tim theo so link, tag, nguon..."
+          placeholder="Tìm theo số link, tag, nguồn..."
           data-search
         />
       </section>
@@ -79,9 +79,9 @@ const sampleSource = "https://giaumobi.blogspot.com/";
                   href={video.url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  aria-label={`Mo ${video.title}`}
+                  aria-label={`Mở ${video.title}`}
                 >
-                  Mo
+                  Mở
                 </a>
               </div>
             </article>
@@ -91,7 +91,7 @@ const sampleSource = "https://giaumobi.blogspot.com/";
 
       <footer class="mt-8 border-t border-line py-5 text-xs leading-6 text-muted">
         <p>
-          Site chi tong hop link cong khai, khong luu tru video. Neu mot link bi loi, thay URL trong
+          Site chỉ tổng hợp link công khai, không lưu trữ video. Nếu một link bị lỗi, thay URL trong
           <code class="rounded bg-white px-1 py-0.5 text-ink">src/data/videos.ts</code>.
         </p>
       </footer>
