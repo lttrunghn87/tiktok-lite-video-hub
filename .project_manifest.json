@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "TikTok Lite Video Hub",
+  "slug": "tiktok-lite-video-hub",
+  "type": "astro-static-site",
+  "parent_project": "WebDevelopment",
+  "path": "E:\\AI-Agents\\WebDevelopment\\workspace\\tiktok-lite-video-hub",
+  "created_at": "2026-06-12",
+  "brief": "Minimal Vietnamese Astro/Tailwind website listing long-form TikTok Lite links for fast opening.",
+  "stack": {
+    "framework": "Astro 6",
+    "styling": "TailwindCSS 4",
+    "deployment_target": "Cloudflare Pages or any static host"
+  },
+  "source_policy": {
+    "video_links": "External public TikTok Lite links only; no video files are hosted locally.",
+    "duration_note": "Durations are maintained as editorial metadata because TikTok Lite pages do not consistently expose machine-readable duration."
+  }
+}

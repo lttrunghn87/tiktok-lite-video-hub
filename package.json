@@ -1,0 +1,20 @@
+{
+  "name": "tiktok-lite-video-hub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "test:smoke": "playwright test"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "astro": "^6.4.6",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}
