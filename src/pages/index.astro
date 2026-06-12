@@ -1,9 +1,6 @@
 ---
 import "../styles/global.css";
 import { videos } from "../data/videos";
-
-const total = videos.length;
-const sampleSource = "https://giaumobi.blogspot.com/";
 ---
 
 <!doctype html>
@@ -11,106 +8,27 @@ const sampleSource = "https://giaumobi.blogspot.com/";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Danh sách link TikTok Lite video dài trên 1 giờ để mở nhanh." />
-    <title>TikTok Lite Video Dài</title>
+    <meta name="description" content="TikTok Lite video link buttons." />
+    <title>TikTok Lite Links</title>
   </head>
   <body class="bg-paper text-ink antialiased">
-    <main class="mx-auto min-h-screen w-full max-w-3xl px-4 py-6 sm:px-6 lg:px-8">
-      <header class="border-b border-line pb-5">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">TikTok Lite</p>
-            <h1 class="mt-2 text-2xl font-semibold leading-tight text-ink sm:text-3xl">
-              Video dài trên 1 giờ
-            </h1>
-          </div>
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded border border-line bg-white shadow-sm">
-            <span class="text-lg font-black text-tiktok-red">▶</span>
-          </div>
-        </div>
-        <div class="mt-4 flex flex-wrap items-center gap-2 text-sm text-muted">
-          <span class="rounded border border-line bg-white px-2.5 py-1">{total} link</span>
-          <span class="rounded border border-line bg-white px-2.5 py-1">Mở bằng TikTok Lite</span>
-          <a
-            class="rounded border border-line bg-white px-2.5 py-1 text-ink underline-offset-4 hover:underline"
-            href={sampleSource}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-          >
-            Mẫu gốc
-          </a>
-        </div>
-      </header>
-
-      <section class="py-5">
-        <label class="sr-only" for="video-search">Tim link video</label>
-        <input
-          id="video-search"
-          class="h-11 w-full rounded border border-line bg-white px-3 text-sm outline-none transition focus:border-tiktok-cyan focus:ring-2 focus:ring-tiktok-cyan/30"
-          type="search"
-          placeholder="Tìm theo số link, tag, nguồn..."
-          data-search
-        />
-      </section>
-
-      <section class="grid gap-2" aria-label="Danh sach video">
+    <main class="mx-auto flex min-h-screen w-full max-w-3xl items-start px-3 py-4 sm:px-4">
+      <section class="grid w-full grid-cols-4 gap-2" aria-label="TikTok Lite links">
         {
           videos.map((video) => (
-            <article
-              class="group rounded border border-line bg-white p-3 shadow-sm transition hover:border-neutral-400"
-              data-card
-              data-search-text={`link ${String(video.id).padStart(2, "0")} ${video.id} ${video.title} ${video.tag} ${video.source} ${video.status}`}
+            <a
+              class="flex h-12 items-center justify-center rounded border border-line bg-white px-2 text-center text-sm font-semibold text-ink shadow-sm transition hover:border-neutral-500 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-tiktok-cyan focus:ring-offset-2 sm:h-14 sm:text-base"
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              aria-label={`Open Link ${video.id}`}
+              data-link-button
             >
-              <div class="flex items-center justify-between gap-3">
-                <div class="min-w-0">
-                  <p class="truncate text-sm font-semibold text-ink">
-                    Link {String(video.id).padStart(2, "0")} · {video.title}
-                  </p>
-                  <p class="mt-1 flex flex-wrap gap-1.5 text-xs text-muted">
-                    <span>{video.duration}</span>
-                    <span>·</span>
-                    <span>{video.tag}</span>
-                    <span>·</span>
-                    <span>{video.source}</span>
-                  </p>
-                </div>
-                <a
-                  class="inline-flex h-10 shrink-0 items-center justify-center rounded bg-ink px-3 text-sm font-semibold text-white transition hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-tiktok-red focus:ring-offset-2"
-                  href={video.url}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  aria-label={`Mở ${video.title}`}
-                >
-                  Mở
-                </a>
-              </div>
-            </article>
+              Link {video.id}
+            </a>
           ))
         }
       </section>
-
-      <footer class="mt-8 border-t border-line py-5 text-xs leading-6 text-muted">
-        <p>
-          Site chỉ tổng hợp link công khai, không lưu trữ video. Nếu một link bị lỗi, thay URL trong
-          <code class="rounded bg-white px-1 py-0.5 text-ink">src/data/videos.ts</code>.
-        </p>
-      </footer>
     </main>
-
-    <script>
-      const input = document.querySelector("[data-search]");
-      const cards = Array.from(document.querySelectorAll("[data-card]"));
-
-      input?.addEventListener("input", (event) => {
-        const target = event.target;
-        if (!(target instanceof HTMLInputElement)) return;
-        const query = target.value.trim().toLowerCase();
-
-        for (const card of cards) {
-          const text = card.getAttribute("data-search-text")?.toLowerCase() ?? "";
-          card.classList.toggle("hidden", query.length > 0 && !text.includes(query));
-        }
-      });
-    </script>
   </body>
 </html>
