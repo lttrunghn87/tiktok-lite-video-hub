@@ -33,8 +33,9 @@ import { videos } from "../data/videos";
 
       .link-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 6px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(5, 56px);
+        gap: 8px;
         width: 100%;
       }
 
@@ -42,7 +43,7 @@ import { videos } from "../data/videos";
         box-sizing: border-box;
         display: flex;
         min-width: 0;
-        height: 44px;
+        height: 56px;
         align-items: center;
         justify-content: center;
         border: 1px solid #e5e5e5;
@@ -50,7 +51,7 @@ import { videos } from "../data/videos";
         background: #ffffff;
         box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
         color: #171717;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         line-height: 1;
         text-align: center;
@@ -64,6 +65,18 @@ import { videos } from "../data/videos";
         outline-offset: 1px;
       }
 
+      .link-button[data-state="one"] {
+        border-color: #16a34a;
+        background: #22c55e;
+        color: #ffffff;
+      }
+
+      .link-button[data-state="two"] {
+        border-color: #ca8a04;
+        background: #facc15;
+        color: #171717;
+      }
+
       @media (min-width: 640px) {
         .link-shell {
           padding: 16px;
@@ -74,7 +87,7 @@ import { videos } from "../data/videos";
         }
 
         .link-button {
-          height: 56px;
+          height: 64px;
           font-size: 16px;
         }
       }
@@ -82,15 +95,21 @@ import { videos } from "../data/videos";
   </head>
   <body>
     <main class="link-shell">
-      <section class="link-grid" aria-label="TikTok Lite links">
+      <section
+        class="link-grid"
+        style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(5, 56px); gap: 8px; width: 100%;"
+        aria-label="TikTok Lite links"
+      >
         {
           videos.map((video) => (
             <a
               class="link-button"
+              style="box-sizing: border-box; display: flex; min-width: 0; height: 56px; align-items: center; justify-content: center; border: 1px solid #e5e5e5; border-radius: 4px; background: #ffffff; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12); color: #171717; font-size: 14px; font-weight: 700; line-height: 1; text-align: center; text-decoration: none; white-space: nowrap; -webkit-tap-highlight-color: transparent;"
               href={video.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
               aria-label={`Open Link ${video.id}`}
+              data-link-id={video.id}
               data-link-button
             >
               Link {video.id}
@@ -99,5 +118,99 @@ import { videos } from "../data/videos";
         }
       </section>
     </main>
+    <script>
+      const STORAGE_KEY = "tiktok-lite-link-states";
+      const RESET_AFTER_MS = 24 * 60 * 60 * 1000;
+
+      const readState = () => {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch {
+          return {};
+        }
+      };
+
+      const writeState = (state) => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      };
+
+      const stateForCount = (count) => {
+        if (count === 1) return "one";
+        if (count >= 2) return "two";
+        return "";
+      };
+
+      const applyButtonState = (button, entry, now = Date.now()) => {
+        if (!entry || entry.expiresAt <= now) {
+          button.removeAttribute("data-state");
+          button.style.borderColor = "#e5e5e5";
+          button.style.backgroundColor = "#ffffff";
+          button.style.color = "#171717";
+          return false;
+        }
+
+        const state = stateForCount(entry.count);
+        if (state) {
+          button.setAttribute("data-state", state);
+          if (state === "one") {
+            button.style.borderColor = "#16a34a";
+            button.style.backgroundColor = "#22c55e";
+            button.style.color = "#ffffff";
+          }
+          if (state === "two") {
+            button.style.borderColor = "#ca8a04";
+            button.style.backgroundColor = "#facc15";
+            button.style.color = "#171717";
+          }
+        } else {
+          button.removeAttribute("data-state");
+          button.style.borderColor = "#e5e5e5";
+          button.style.backgroundColor = "#ffffff";
+          button.style.color = "#171717";
+        }
+        return true;
+      };
+
+      const hydrateButtons = () => {
+        const now = Date.now();
+        const stored = readState();
+        let changed = false;
+
+        for (const button of document.querySelectorAll("[data-link-button]")) {
+          const id = button.getAttribute("data-link-id");
+          if (!id) continue;
+
+          const isValid = applyButtonState(button, stored[id], now);
+          if (!isValid && stored[id]) {
+            delete stored[id];
+            changed = true;
+          }
+        }
+
+        if (changed) writeState(stored);
+      };
+
+      hydrateButtons();
+
+      for (const button of document.querySelectorAll("[data-link-button]")) {
+        button.addEventListener("click", () => {
+          const id = button.getAttribute("data-link-id");
+          if (!id) return;
+
+          const now = Date.now();
+          const stored = readState();
+          const current = stored[id]?.expiresAt > now ? stored[id] : { count: 0, expiresAt: 0 };
+          const next = {
+            count: Math.min(current.count + 1, 2),
+            expiresAt: now + RESET_AFTER_MS
+          };
+
+          stored[id] = next;
+          writeState(stored);
+          applyButtonState(button, next, now);
+        });
+      }
+    </script>
   </body>
 </html>
