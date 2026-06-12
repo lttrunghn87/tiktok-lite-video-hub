@@ -16,3 +16,12 @@ On Windows PowerShell, run npm actions as separate commands:
 cmd /d /s /c npm.cmd install
 cmd /d /s /c npm.cmd run build
 ```
+
+For multi-line PowerShell loops, assign loop output to a variable before piping:
+
+```powershell
+$rows = foreach ($item in $items) { [pscustomobject]@{ name = $item } }
+$rows | ConvertTo-Json
+```
+
+Avoid placing a pipeline directly after a closing `}` when the command structure is ambiguous.

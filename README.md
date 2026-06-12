@@ -27,3 +27,5 @@ cmd /d /s /c npm.cmd run build
 Static output folder: `dist`
 
 Recommended online path: Cloudflare Pages with framework preset `Astro`.
+
+Full deploy steps: `docs/deploy-cloudflare-pages.md`.
