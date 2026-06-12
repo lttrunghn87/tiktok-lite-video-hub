@@ -11,13 +11,13 @@ import { videos } from "../data/videos";
     <meta name="description" content="TikTok Lite video link buttons." />
     <title>TikTok Lite Links</title>
   </head>
-  <body class="bg-paper text-ink antialiased">
-    <main class="mx-auto flex min-h-screen w-full max-w-3xl items-start px-3 py-4 sm:px-4">
-      <section class="grid w-full grid-cols-4 gap-2" aria-label="TikTok Lite links">
+  <body class="overflow-x-hidden bg-paper text-ink antialiased">
+    <main class="mx-auto flex min-h-screen w-full max-w-3xl items-start px-2 py-3 sm:px-4 sm:py-4">
+      <section class="grid w-full grid-cols-4 gap-1.5 sm:gap-2" aria-label="TikTok Lite links">
         {
           videos.map((video) => (
             <a
-              class="flex h-12 items-center justify-center rounded border border-line bg-white px-2 text-center text-sm font-semibold text-ink shadow-sm transition hover:border-neutral-500 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-tiktok-cyan focus:ring-offset-2 sm:h-14 sm:text-base"
+              class="flex h-11 min-w-0 items-center justify-center rounded border border-line bg-white px-1 text-center text-xs font-semibold leading-none text-ink shadow-sm transition hover:border-neutral-500 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-tiktok-cyan focus:ring-offset-1 sm:h-14 sm:px-2 sm:text-base sm:focus:ring-offset-2"
               href={video.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
