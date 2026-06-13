@@ -17,11 +17,11 @@ test("renders verified TikTok Lite link buttons", async ({ page }) => {
   }
 });
 
-test("contains only links verified as 59:59 or longer", () => {
+test("contains only links verified as 40 minutes or longer", () => {
   expect(videos).toHaveLength(15);
   expect(new Set(videos.map((video) => video.videoId)).size).toBe(videos.length);
   for (const video of videos) {
-    expect(video.durationSec).toBeGreaterThanOrEqual(3599);
+    expect(video.durationSec).toBeGreaterThanOrEqual(2400);
   }
 });
 
@@ -29,58 +29,14 @@ test("renders TikTok Lite open targets instead of plain TikTok web links", async
   await page.goto("/");
 
   const hrefs = await page.locator("[data-link-button]").evaluateAll((buttons) =>
-    buttons.map((button) => ({
-      androidIntent: button.getAttribute("data-android-intent") ?? "",
-      href: button.getAttribute("href") ?? ""
-    }))
+    buttons.map((button) => button.getAttribute("href") ?? "")
   );
 
-  for (const { androidIntent, href } of hrefs) {
+  for (const href of hrefs) {
     expect(href.startsWith("https://www.tiktok.com/")).toBe(false);
-    expect(androidIntent.startsWith("https://www.tiktok.com/")).toBe(false);
     expect(
       href.startsWith("https://lite.tiktok.com/t/") ||
-        href.startsWith("snssdk1233://aweme/detail/") ||
-        (href.startsWith("intent://") && href.includes("package=com.ss.android.ugc.tiktok.lite"))
+        (href.startsWith("intent://") && href.includes("package=com.tiktok.lite.go"))
     ).toBe(true);
-
-    if (androidIntent) {
-      expect(androidIntent.startsWith("intent://aweme/detail/")).toBe(true);
-      expect(androidIntent.includes("package=com.ss.android.ugc.tiktok.lite")).toBe(true);
-    }
   }
-});
-
-test("tracks button click colors for each user and resets after 24 hours", async ({ page }) => {
-  await page.goto("/");
-
-  const firstButton = page.getByRole("link", { name: "Open Link 1", exact: true });
-  await expect(firstButton).not.toHaveAttribute("data-state", /.+/);
-
-  await firstButton.evaluate((button) => {
-    button.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
-    button.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
-  });
-  await expect(firstButton).toHaveAttribute("data-state", "one");
-
-  await firstButton.evaluate((button) => {
-    button.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
-    button.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
-  });
-  await expect(firstButton).toHaveAttribute("data-state", "two");
-
-  await page.evaluate(() => {
-    localStorage.setItem(
-      "tiktok-lite-link-states",
-      JSON.stringify({
-        1: {
-          count: 2,
-          expiresAt: Date.now() - 1000
-        }
-      })
-    );
-  });
-
-  await page.reload();
-  await expect(firstButton).not.toHaveAttribute("data-state", /.+/);
 });

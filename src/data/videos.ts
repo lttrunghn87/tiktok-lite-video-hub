@@ -7,20 +7,16 @@ export type VideoLink = {
   durationSec: number;
   url: string;
   openUrl?: string;
-  androidIntentUrl?: string;
   source: "verified_tiktok_html";
   status: "verified_3600_seconds" | "verified_3599_seconds";
 };
 
-const TIKTOK_LITE_JP_PACKAGE = "com.ss.android.ugc.tiktok.lite";
-const TIKTOK_LITE_JP_STORE_URL =
-  "https://play.google.com/store/apps/details?gl=JP&id=com.ss.android.ugc.tiktok.lite";
+const TIKTOK_LITE_PACKAGE = "com.tiktok.lite.go";
+const TIKTOK_LITE_STORE_URL = "https://play.google.com/store/apps/details?id=com.tiktok.lite.go";
 
-const tiktokLiteDeepUrl = (videoId: string) => `snssdk1233://aweme/detail/${videoId}`;
-
-const tiktokLiteJpIntentUrl = (videoId: string) =>
-  `intent://aweme/detail/${videoId}#Intent;scheme=snssdk1233;package=${TIKTOK_LITE_JP_PACKAGE};S.browser_fallback_url=${encodeURIComponent(
-    TIKTOK_LITE_JP_STORE_URL
+const tiktokLiteIntentUrl = (videoId: string) =>
+  `intent://aweme/detail/${videoId}#Intent;scheme=snssdk1233;package=${TIKTOK_LITE_PACKAGE};S.browser_fallback_url=${encodeURIComponent(
+    TIKTOK_LITE_STORE_URL
   )};end`;
 
 export const videos: VideoLink[] = [
@@ -120,8 +116,7 @@ export const videos: VideoLink[] = [
     duration: "1:00:00",
     durationSec: 3600,
     url: "https://www.tiktok.com/@cuber_k_/video/7643353931040509191",
-    openUrl: tiktokLiteDeepUrl("7643353931040509191"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7643353931040509191"),
+    openUrl: tiktokLiteIntentUrl("7643353931040509191"),
     source: "verified_tiktok_html",
     status: "verified_3600_seconds"
   },
@@ -133,8 +128,7 @@ export const videos: VideoLink[] = [
     duration: "1:00:00",
     durationSec: 3600,
     url: "https://www.tiktok.com/@viwbird/video/7402515776411880725",
-    openUrl: tiktokLiteDeepUrl("7402515776411880725"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7402515776411880725"),
+    openUrl: tiktokLiteIntentUrl("7402515776411880725"),
     source: "verified_tiktok_html",
     status: "verified_3600_seconds"
   },
@@ -146,8 +140,7 @@ export const videos: VideoLink[] = [
     duration: "1:00:00",
     durationSec: 3600,
     url: "https://www.tiktok.com/@user3749668106613/video/7576616804462742804",
-    openUrl: tiktokLiteDeepUrl("7576616804462742804"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7576616804462742804"),
+    openUrl: tiktokLiteIntentUrl("7576616804462742804"),
     source: "verified_tiktok_html",
     status: "verified_3600_seconds"
   },
@@ -159,8 +152,7 @@ export const videos: VideoLink[] = [
     duration: "59:59",
     durationSec: 3599,
     url: "https://www.tiktok.com/@viwbird/video/7522507977799011591",
-    openUrl: tiktokLiteDeepUrl("7522507977799011591"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7522507977799011591"),
+    openUrl: tiktokLiteIntentUrl("7522507977799011591"),
     source: "verified_tiktok_html",
     status: "verified_3599_seconds"
   },
@@ -172,8 +164,7 @@ export const videos: VideoLink[] = [
     duration: "59:59",
     durationSec: 3599,
     url: "https://www.tiktok.com/@poikatsu_support_jp/video/7581243462704499984",
-    openUrl: tiktokLiteDeepUrl("7581243462704499984"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7581243462704499984"),
+    openUrl: tiktokLiteIntentUrl("7581243462704499984"),
     source: "verified_tiktok_html",
     status: "verified_3599_seconds"
   },
@@ -185,8 +176,7 @@ export const videos: VideoLink[] = [
     duration: "59:59",
     durationSec: 3599,
     url: "https://www.tiktok.com/@poikatsu_support_jp/video/7580872481079184656",
-    openUrl: tiktokLiteDeepUrl("7580872481079184656"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7580872481079184656"),
+    openUrl: tiktokLiteIntentUrl("7580872481079184656"),
     source: "verified_tiktok_html",
     status: "verified_3599_seconds"
   },
@@ -198,8 +188,7 @@ export const videos: VideoLink[] = [
     duration: "59:59",
     durationSec: 3599,
     url: "https://www.tiktok.com/@faileskeb7p/video/7390359695346748689",
-    openUrl: tiktokLiteDeepUrl("7390359695346748689"),
-    androidIntentUrl: tiktokLiteJpIntentUrl("7390359695346748689"),
+    openUrl: tiktokLiteIntentUrl("7390359695346748689"),
     source: "verified_tiktok_html",
     status: "verified_3599_seconds"
   }

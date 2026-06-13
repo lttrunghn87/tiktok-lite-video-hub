@@ -65,18 +65,6 @@ import { videos } from "../data/videos";
         outline-offset: 1px;
       }
 
-      .link-button[data-state="one"] {
-        border-color: #16a34a;
-        background: #22c55e;
-        color: #ffffff;
-      }
-
-      .link-button[data-state="two"] {
-        border-color: #ca8a04;
-        background: #facc15;
-        color: #171717;
-      }
-
       @media (min-width: 640px) {
         .link-shell {
           padding: 16px;
@@ -109,7 +97,6 @@ import { videos } from "../data/videos";
               rel="noopener noreferrer nofollow"
               aria-label={`Open Link ${video.id}`}
               data-link-id={video.id}
-              data-android-intent={video.androidIntentUrl}
               data-link-button
             >
               Link {video.id}
@@ -118,118 +105,5 @@ import { videos } from "../data/videos";
         }
       </section>
     </main>
-    <script>
-      const STORAGE_KEY = "tiktok-lite-link-states";
-      const RESET_AFTER_MS = 24 * 60 * 60 * 1000;
-      const isAndroid = /android/i.test(navigator.userAgent);
-
-      const readState = () => {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          return raw ? JSON.parse(raw) : {};
-        } catch {
-          return {};
-        }
-      };
-
-      const writeState = (state) => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      };
-
-      const stateForCount = (count) => {
-        if (count === 1) return "one";
-        if (count >= 2) return "two";
-        return "";
-      };
-
-      const applyButtonState = (button, entry, now = Date.now()) => {
-        if (!entry || entry.expiresAt <= now) {
-          button.removeAttribute("data-state");
-          button.style.borderColor = "#e5e5e5";
-          button.style.backgroundColor = "#ffffff";
-          button.style.color = "#171717";
-          return false;
-        }
-
-        const state = stateForCount(entry.count);
-        if (state) {
-          button.setAttribute("data-state", state);
-          if (state === "one") {
-            button.style.borderColor = "#16a34a";
-            button.style.backgroundColor = "#22c55e";
-            button.style.color = "#ffffff";
-          }
-          if (state === "two") {
-            button.style.borderColor = "#ca8a04";
-            button.style.backgroundColor = "#facc15";
-            button.style.color = "#171717";
-          }
-        } else {
-          button.removeAttribute("data-state");
-          button.style.borderColor = "#e5e5e5";
-          button.style.backgroundColor = "#ffffff";
-          button.style.color = "#171717";
-        }
-        return true;
-      };
-
-      const hydrateButtons = () => {
-        const now = Date.now();
-        const stored = readState();
-        let changed = false;
-
-        for (const button of document.querySelectorAll("[data-link-button]")) {
-          const id = button.getAttribute("data-link-id");
-          if (!id) continue;
-
-          const isValid = applyButtonState(button, stored[id], now);
-          if (!isValid && stored[id]) {
-            delete stored[id];
-            changed = true;
-          }
-        }
-
-        if (changed) writeState(stored);
-      };
-
-      const prepareOpenTargets = () => {
-        if (!isAndroid) return;
-
-        for (const button of document.querySelectorAll("[data-link-button]")) {
-          const androidIntent = button.getAttribute("data-android-intent");
-          if (androidIntent) {
-            button.setAttribute("href", androidIntent);
-          }
-        }
-      };
-
-      hydrateButtons();
-      prepareOpenTargets();
-
-      for (const button of document.querySelectorAll("[data-link-button]")) {
-        button.addEventListener("click", (event) => {
-          const id = button.getAttribute("data-link-id");
-          if (!id) return;
-
-          const now = Date.now();
-          const stored = readState();
-          const current = stored[id]?.expiresAt > now ? stored[id] : { count: 0, expiresAt: 0 };
-          const next = {
-            count: Math.min(current.count + 1, 2),
-            expiresAt: now + RESET_AFTER_MS
-          };
-
-          stored[id] = next;
-          writeState(stored);
-          applyButtonState(button, next, now);
-
-          const androidIntent = button.getAttribute("data-android-intent");
-          if (androidIntent && isAndroid && !event.defaultPrevented) {
-            event.preventDefault();
-            window.location.href = androidIntent;
-          }
-        });
-      }
-    </script>
   </body>
 </html>
