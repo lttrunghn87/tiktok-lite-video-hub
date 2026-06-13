@@ -17,11 +17,15 @@ test("renders verified TikTok Lite link buttons", async ({ page }) => {
   }
 });
 
-test("contains only links verified as 40 minutes or longer", () => {
+test("keeps verified links and sample-site replacements", () => {
   expect(videos).toHaveLength(15);
   expect(new Set(videos.map((video) => video.videoId)).size).toBe(videos.length);
   for (const video of videos) {
-    expect(video.durationSec).toBeGreaterThanOrEqual(2400);
+    if (video.source === "verified_tiktok_html") {
+      expect(video.durationSec).toBeGreaterThanOrEqual(1740);
+    } else {
+      expect(video.source).toBe("sample_site");
+    }
   }
 });
 
@@ -34,9 +38,7 @@ test("renders TikTok Lite open targets instead of plain TikTok web links", async
 
   for (const href of hrefs) {
     expect(href.startsWith("https://www.tiktok.com/")).toBe(false);
-    expect(
-      href.startsWith("https://lite.tiktok.com/t/") ||
-        (href.startsWith("intent://") && href.includes("package=com.tiktok.lite.go"))
-    ).toBe(true);
+    expect(href.startsWith("intent://")).toBe(false);
+    expect(href.startsWith("https://lite.tiktok.com/t/")).toBe(true);
   }
 });

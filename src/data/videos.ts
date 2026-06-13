@@ -6,18 +6,9 @@ export type VideoLink = {
   duration: string;
   durationSec: number;
   url: string;
-  openUrl?: string;
-  source: "verified_tiktok_html";
-  status: "verified_3600_seconds" | "verified_3599_seconds";
+  source: "sample_site" | "verified_tiktok_html";
+  status: "sample_site_link" | "verified_3600_seconds" | "verified_3599_seconds";
 };
-
-const TIKTOK_LITE_PACKAGE = "com.tiktok.lite.go";
-const TIKTOK_LITE_STORE_URL = "https://play.google.com/store/apps/details?id=com.tiktok.lite.go";
-
-const tiktokLiteIntentUrl = (videoId: string) =>
-  `intent://aweme/detail/${videoId}#Intent;scheme=snssdk1233;package=${TIKTOK_LITE_PACKAGE};S.browser_fallback_url=${encodeURIComponent(
-    TIKTOK_LITE_STORE_URL
-  )};end`;
 
 export const videos: VideoLink[] = [
   {
@@ -110,86 +101,79 @@ export const videos: VideoLink[] = [
   },
   {
     id: 9,
-    videoId: "7643353931040509191",
-    title: "Japan TikTok Lite idle task video",
-    tag: "jp tiktoklite",
-    duration: "1:00:00",
-    durationSec: 3600,
-    url: "https://www.tiktok.com/@cuber_k_/video/7643353931040509191",
-    openUrl: tiktokLiteIntentUrl("7643353931040509191"),
-    source: "verified_tiktok_html",
-    status: "verified_3600_seconds"
+    videoId: "7389890599555566849",
+    title: "Sample Link 1",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZS6rUywGN/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 10,
-    videoId: "7402515776411880725",
-    title: "Japan 60min silent timer",
-    tag: "jp 60min",
-    duration: "1:00:00",
-    durationSec: 3600,
-    url: "https://www.tiktok.com/@viwbird/video/7402515776411880725",
-    openUrl: tiktokLiteIntentUrl("7402515776411880725"),
-    source: "verified_tiktok_html",
-    status: "verified_3600_seconds"
+    videoId: "7380604897227574535",
+    title: "Sample Link 2",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZSrGTDx7a/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 11,
-    videoId: "7576616804462742804",
-    title: "Japan TikTok Lite 60min task",
-    tag: "jp tiktoklite",
-    duration: "1:00:00",
-    durationSec: 3600,
-    url: "https://www.tiktok.com/@user3749668106613/video/7576616804462742804",
-    openUrl: tiktokLiteIntentUrl("7576616804462742804"),
-    source: "verified_tiktok_html",
-    status: "verified_3600_seconds"
+    videoId: "7437380860212514066",
+    title: "Sample Link 4",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZS6rUtJ2s/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 12,
-    videoId: "7522507977799011591",
-    title: "Japan 60min wave timer",
-    tag: "jp 60min",
-    duration: "59:59",
-    durationSec: 3599,
-    url: "https://www.tiktok.com/@viwbird/video/7522507977799011591",
-    openUrl: tiktokLiteIntentUrl("7522507977799011591"),
-    source: "verified_tiktok_html",
-    status: "verified_3599_seconds"
+    videoId: "7558683024137735431",
+    title: "Sample Link 5",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZSUQcMJeP/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 13,
-    videoId: "7581243462704499984",
-    title: "Japan TikTok Lite timer 2025-12-08",
-    tag: "jp tiktoklite",
-    duration: "59:59",
-    durationSec: 3599,
-    url: "https://www.tiktok.com/@poikatsu_support_jp/video/7581243462704499984",
-    openUrl: tiktokLiteIntentUrl("7581243462704499984"),
-    source: "verified_tiktok_html",
-    status: "verified_3599_seconds"
+    videoId: "7557907308131585287",
+    title: "Sample Link 6",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZSUQ3d9WK/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 14,
-    videoId: "7580872481079184656",
-    title: "Japan TikTok Lite timer 2025-12-07",
-    tag: "jp tiktoklite",
-    duration: "59:59",
-    durationSec: 3599,
-    url: "https://www.tiktok.com/@poikatsu_support_jp/video/7580872481079184656",
-    openUrl: tiktokLiteIntentUrl("7580872481079184656"),
-    source: "verified_tiktok_html",
-    status: "verified_3599_seconds"
+    videoId: "7555698653738847495",
+    title: "Sample Link 7",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZSUQcXHY8/",
+    source: "sample_site",
+    status: "sample_site_link"
   },
   {
     id: 15,
-    videoId: "7390359695346748689",
-    title: "Japan TikTok Lite idle task",
-    tag: "jp tiktoklite",
-    duration: "59:59",
-    durationSec: 3599,
-    url: "https://www.tiktok.com/@faileskeb7p/video/7390359695346748689",
-    openUrl: tiktokLiteIntentUrl("7390359695346748689"),
-    source: "verified_tiktok_html",
-    status: "verified_3599_seconds"
+    videoId: "7545049771946396946",
+    title: "Sample Link 8",
+    tag: "sample",
+    duration: "sample",
+    durationSec: 0,
+    url: "https://lite.tiktok.com/t/ZSUQToALd/",
+    source: "sample_site",
+    status: "sample_site_link"
   }
 ];
