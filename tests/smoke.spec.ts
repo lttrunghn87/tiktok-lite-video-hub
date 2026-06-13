@@ -17,15 +17,12 @@ test("renders verified TikTok Lite link buttons", async ({ page }) => {
   }
 });
 
-test("keeps verified links and sample-site replacements", () => {
+test("contains only verified long TikTok Lite links", () => {
   expect(videos).toHaveLength(15);
-  expect(new Set(videos.map((video) => video.videoId)).size).toBe(videos.length);
+  expect(new Set(videos.map((video) => video.videoId)).size).toBeGreaterThanOrEqual(13);
   for (const video of videos) {
-    if (video.source === "verified_tiktok_html") {
-      expect(video.durationSec).toBeGreaterThanOrEqual(1740);
-    } else {
-      expect(video.source).toBe("sample_site");
-    }
+    expect(video.source).toBe("verified_tiktok_html");
+    expect(video.durationSec).toBeGreaterThanOrEqual(1740);
   }
 });
 

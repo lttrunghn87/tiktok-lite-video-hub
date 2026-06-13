@@ -6,8 +6,8 @@ export type VideoLink = {
   duration: string;
   durationSec: number;
   url: string;
-  source: "sample_site" | "verified_tiktok_html";
-  status: "sample_site_link" | "verified_3600_seconds" | "verified_3599_seconds";
+  source: "verified_tiktok_html";
+  status: "verified_3600_seconds" | "verified_3599_seconds";
 };
 
 export const videos: VideoLink[] = [
@@ -102,78 +102,78 @@ export const videos: VideoLink[] = [
   {
     id: 9,
     videoId: "7389890599555566849",
-    title: "Sample Link 1",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
+    title: "TikTokLite 60min idle task",
+    tag: "jp 60min",
+    duration: "59:59",
+    durationSec: 3599,
     url: "https://lite.tiktok.com/t/ZS6rUywGN/",
-    source: "sample_site",
-    status: "sample_site_link"
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
   },
   {
     id: 10,
     videoId: "7380604897227574535",
-    title: "Sample Link 2",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
+    title: "TikTokLite 60min black screen",
+    tag: "jp 60min",
+    duration: "1:00:00",
+    durationSec: 3600,
     url: "https://lite.tiktok.com/t/ZSrGTDx7a/",
-    source: "sample_site",
-    status: "sample_site_link"
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
   },
   {
     id: 11,
     videoId: "7437380860212514066",
-    title: "Sample Link 4",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
+    title: "TikTokLite 60min silent video",
+    tag: "jp 60min",
+    duration: "1:00:00",
+    durationSec: 3600,
     url: "https://lite.tiktok.com/t/ZS6rUtJ2s/",
-    source: "sample_site",
-    status: "sample_site_link"
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
   },
   {
     id: 12,
-    videoId: "7558683024137735431",
-    title: "Sample Link 5",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
-    url: "https://lite.tiktok.com/t/ZSUQcMJeP/",
-    source: "sample_site",
-    status: "sample_site_link"
+    videoId: "7479431852676091154",
+    title: "VIDEO 60P - Version 2 Alt",
+    tag: "60p",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://lite.tiktok.com/t/ZSM4coUbQ/",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
   },
   {
     id: 13,
-    videoId: "7557907308131585287",
-    title: "Sample Link 6",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
-    url: "https://lite.tiktok.com/t/ZSUQ3d9WK/",
-    source: "sample_site",
-    status: "sample_site_link"
+    videoId: "7612907784996195605",
+    title: "Japan 180min task 60min video",
+    tag: "jp 60min",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://lite.tiktok.com/t/ZSuSUyy8F/",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
   },
   {
     id: 14,
-    videoId: "7555698653738847495",
-    title: "Sample Link 7",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
-    url: "https://lite.tiktok.com/t/ZSUQcXHY8/",
-    source: "sample_site",
-    status: "sample_site_link"
+    videoId: "7380604897227574535",
+    title: "TikTokLite 60min black screen backup",
+    tag: "jp 60min",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://lite.tiktok.com/t/ZSrGTt2F5/",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
   },
   {
     id: 15,
-    videoId: "7545049771946396946",
-    title: "Sample Link 8",
-    tag: "sample",
-    duration: "sample",
-    durationSec: 0,
-    url: "https://lite.tiktok.com/t/ZSUQToALd/",
-    source: "sample_site",
-    status: "sample_site_link"
+    videoId: "7473894325714406664",
+    title: "TikTokLite 60min silent task backup",
+    tag: "60min silent",
+    duration: "59:59",
+    durationSec: 3599,
+    url: "https://lite.tiktok.com/t/ZSrjqdo5Q/",
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
   }
 ];
