@@ -121,6 +121,7 @@ import { videos } from "../data/videos";
     <script>
       const STORAGE_KEY = "tiktok-lite-link-states";
       const RESET_AFTER_MS = 24 * 60 * 60 * 1000;
+      const isAndroid = /android/i.test(navigator.userAgent);
 
       const readState = () => {
         try {
@@ -191,10 +192,22 @@ import { videos } from "../data/videos";
         if (changed) writeState(stored);
       };
 
+      const prepareOpenTargets = () => {
+        if (!isAndroid) return;
+
+        for (const button of document.querySelectorAll("[data-link-button]")) {
+          const androidIntent = button.getAttribute("data-android-intent");
+          if (androidIntent) {
+            button.setAttribute("href", androidIntent);
+          }
+        }
+      };
+
       hydrateButtons();
+      prepareOpenTargets();
 
       for (const button of document.querySelectorAll("[data-link-button]")) {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
           const id = button.getAttribute("data-link-id");
           if (!id) return;
 
@@ -211,8 +224,9 @@ import { videos } from "../data/videos";
           applyButtonState(button, next, now);
 
           const androidIntent = button.getAttribute("data-android-intent");
-          if (androidIntent && /android/i.test(navigator.userAgent)) {
-            button.setAttribute("href", androidIntent);
+          if (androidIntent && isAndroid && !event.defaultPrevented) {
+            event.preventDefault();
+            window.location.href = androidIntent;
           }
         });
       }
