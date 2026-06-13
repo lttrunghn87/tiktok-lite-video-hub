@@ -19,6 +19,7 @@ test("renders verified TikTok Lite link buttons", async ({ page }) => {
 
 test("contains only links verified as 59:59 or longer", () => {
   expect(videos).toHaveLength(15);
+  expect(new Set(videos.map((video) => video.videoId)).size).toBe(videos.length);
   for (const video of videos) {
     expect(video.durationSec).toBeGreaterThanOrEqual(3599);
   }
@@ -28,15 +29,25 @@ test("renders TikTok Lite open targets instead of plain TikTok web links", async
   await page.goto("/");
 
   const hrefs = await page.locator("[data-link-button]").evaluateAll((buttons) =>
-    buttons.map((button) => button.getAttribute("href") ?? "")
+    buttons.map((button) => ({
+      androidIntent: button.getAttribute("data-android-intent") ?? "",
+      href: button.getAttribute("href") ?? ""
+    }))
   );
 
-  for (const href of hrefs) {
+  for (const { androidIntent, href } of hrefs) {
     expect(href.startsWith("https://www.tiktok.com/")).toBe(false);
+    expect(androidIntent.startsWith("https://www.tiktok.com/")).toBe(false);
     expect(
       href.startsWith("https://lite.tiktok.com/t/") ||
+        href.startsWith("snssdk1233://aweme/detail/") ||
         (href.startsWith("intent://") && href.includes("package=com.ss.android.ugc.tiktok.lite"))
     ).toBe(true);
+
+    if (androidIntent) {
+      expect(androidIntent.startsWith("intent://aweme/detail/")).toBe(true);
+      expect(androidIntent.includes("package=com.ss.android.ugc.tiktok.lite")).toBe(true);
+    }
   }
 });
 

@@ -109,6 +109,7 @@ import { videos } from "../data/videos";
               rel="noopener noreferrer nofollow"
               aria-label={`Open Link ${video.id}`}
               data-link-id={video.id}
+              data-android-intent={video.androidIntentUrl}
               data-link-button
             >
               Link {video.id}
@@ -208,6 +209,11 @@ import { videos } from "../data/videos";
           stored[id] = next;
           writeState(stored);
           applyButtonState(button, next, now);
+
+          const androidIntent = button.getAttribute("data-android-intent");
+          if (androidIntent && /android/i.test(navigator.userAgent)) {
+            button.setAttribute("href", androidIntent);
+          }
         });
       }
     </script>
