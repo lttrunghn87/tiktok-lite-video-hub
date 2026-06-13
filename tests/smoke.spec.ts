@@ -1,18 +1,26 @@
 import { expect, test } from "@playwright/test";
+import { videos } from "../src/data/videos";
 
 test("renders verified TikTok Lite link buttons", async ({ page }) => {
   await page.goto("/");
 
   await expect(page).toHaveTitle(/TikTok Lite Links/);
-  await expect(page.locator("[data-link-button]")).toHaveCount(4);
+  await expect(page.locator("[data-link-button]")).toHaveCount(videos.length);
   await expect
     .poll(async () =>
       page.locator(".link-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length)
     )
     .toBe(3);
 
-  for (let index = 1; index <= 4; index += 1) {
+  for (let index = 1; index <= videos.length; index += 1) {
     await expect(page.getByRole("link", { name: `Open Link ${index}`, exact: true })).toBeVisible();
+  }
+});
+
+test("contains only links verified as 59:59 or longer", () => {
+  expect(videos.length).toBeGreaterThan(0);
+  for (const video of videos) {
+    expect(video.durationSec).toBeGreaterThanOrEqual(3599);
   }
 });
 
