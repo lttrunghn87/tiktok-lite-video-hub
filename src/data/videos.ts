@@ -89,5 +89,75 @@ export const videos: VideoLink[] = [
     url: "https://lite.tiktok.com/t/ZShVmu2pc/",
     source: "verified_tiktok_html",
     status: "verified_3599_seconds"
+  },
+  {
+    id: 9,
+    title: "Japan TikTok Lite idle task video",
+    tag: "jp tiktoklite",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://www.tiktok.com/@cuber_k_/video/7643353931040509191",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
+  },
+  {
+    id: 10,
+    title: "Japan 60min silent timer",
+    tag: "jp 60min",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://www.tiktok.com/@viwbird/video/7402515776411880725",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
+  },
+  {
+    id: 11,
+    title: "Japan TikTok Lite 60min task",
+    tag: "jp tiktoklite",
+    duration: "1:00:00",
+    durationSec: 3600,
+    url: "https://www.tiktok.com/@user3749668106613/video/7576616804462742804",
+    source: "verified_tiktok_html",
+    status: "verified_3600_seconds"
+  },
+  {
+    id: 12,
+    title: "Japan 60min wave timer",
+    tag: "jp 60min",
+    duration: "59:59",
+    durationSec: 3599,
+    url: "https://www.tiktok.com/@viwbird/video/7522507977799011591",
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
+  },
+  {
+    id: 13,
+    title: "Japan TikTok Lite timer 2025-12-08",
+    tag: "jp tiktoklite",
+    duration: "59:59",
+    durationSec: 3599,
+    url: "https://www.tiktok.com/@poikatsu_support_jp/video/7581243462704499984",
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
+  },
+  {
+    id: 14,
+    title: "Japan TikTok Lite timer 2025-12-07",
+    tag: "jp tiktoklite",
+    duration: "59:59",
+    durationSec: 3599,
+    url: "https://www.tiktok.com/@poikatsu_support_jp/video/7580872481079184656",
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
+  },
+  {
+    id: 15,
+    title: "Japan TikTok Lite idle task",
+    tag: "jp tiktoklite",
+    duration: "59:59",
+    durationSec: 3599,
+    url: "https://www.tiktok.com/@faileskeb7p/video/7390359695346748689",
+    source: "verified_tiktok_html",
+    status: "verified_3599_seconds"
   }
 ];

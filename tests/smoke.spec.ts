@@ -18,7 +18,7 @@ test("renders verified TikTok Lite link buttons", async ({ page }) => {
 });
 
 test("contains only links verified as 59:59 or longer", () => {
-  expect(videos.length).toBeGreaterThan(0);
+  expect(videos).toHaveLength(15);
   for (const video of videos) {
     expect(video.durationSec).toBeGreaterThanOrEqual(3599);
   }
