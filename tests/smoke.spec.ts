@@ -1,17 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-test("renders 15 simple TikTok Lite link buttons", async ({ page }) => {
+test("renders verified TikTok Lite link buttons", async ({ page }) => {
   await page.goto("/");
 
   await expect(page).toHaveTitle(/TikTok Lite Links/);
-  await expect(page.locator("[data-link-button]")).toHaveCount(15);
+  await expect(page.locator("[data-link-button]")).toHaveCount(4);
   await expect
     .poll(async () =>
       page.locator(".link-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length)
     )
     .toBe(3);
 
-  for (let index = 1; index <= 15; index += 1) {
+  for (let index = 1; index <= 4; index += 1) {
     await expect(page.getByRole("link", { name: `Open Link ${index}`, exact: true })).toBeVisible();
   }
 });
